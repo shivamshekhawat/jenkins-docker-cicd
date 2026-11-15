@@ -112,6 +112,20 @@ SCM polling checks GitHub periodically for new commits and triggers a pipeline w
 - Added deployment health verification.
 - Configured SCM polling for automatic build triggering.
 
+## Project Screenshots
+
+### 1. Jenkins Pipeline Execution
+![Jenkins Pipeline Success](screenshots/jenkins-pipeline-success.png)
+
+### 2. Jenkins Console Output
+![Jenkins Console Output](screenshots/jenkins-console-output.png)
+
+### 3. Docker Container Running
+![Docker Container Running](screenshots/docker-container-running.png)
+
+### 4. Automated Test Results
+![Automated Tests](screenshots/automated-tests.png)
+
 ## Author
 
 Shivam Shekhawat
