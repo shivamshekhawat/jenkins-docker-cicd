@@ -22,6 +22,39 @@ The pipeline also uses GitHub SCM polling to detect new commits and automaticall
 - Supertest
 - Bash
 
+## CI/CD Architecture
+
+```mermaid
+flowchart TD
+    A["Developer"] -->|Push code| B["GitHub Repository"]
+    B -->|SCM Polling every 5 minutes| C["Jenkins Pipeline"]
+
+    C --> D["Checkout Source Code"]
+    D --> E["Install Dependencies"]
+    E --> F["Run Automated Tests<br/>Jest + Supertest"]
+    F --> G["Build Docker Image"]
+    G --> H["Deploy Docker Container"]
+    H --> I["Health Check<br/>GET /health"]
+
+    I -->|Success| J["Node.js REST API<br/>localhost:3000"]
+    I -->|Failure| K["Pipeline Failed"]
+
+    style B fill:#e8f0fe,stroke:#4285f4
+    style C fill:#fff3cd,stroke:#d39e00
+    style H fill:#d1e7dd,stroke:#198754
+    style J fill:#d1e7dd,stroke:#198754
+    style K fill:#f8d7da,stroke:#dc3545
+```
+
+**Architecture Explanation:**
+
+1. Developer pushes code to GitHub.
+2. Jenkins checks GitHub periodically using SCM polling.
+3. Jenkins installs dependencies and runs automated tests.
+4. Docker builds a new application image.
+5. Jenkins deploys the updated container locally.
+6. Jenkins verifies the deployment using the health endpoint.
+
 ## Application Features
 
 - Welcome API endpoint
