@@ -1,4 +1,4 @@
-message: "Welcome to DevOps Demo Application! Shivam",
+
 const express = require("express");
 
 const app = express();
@@ -6,16 +6,14 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 
-// Home endpoint
 app.get("/", (req, res) => {
     res.status(200).json({
-        message: "Welcome to DevOps Demo Application!",
+        message: "Welcome to My Automated CI/CD Application!",
         status: "Running",
         technology: "Node.js + Express"
     });
 });
 
-// Health check endpoint
 app.get("/health", (req, res) => {
     res.status(200).json({
         status: "UP",
@@ -23,7 +21,6 @@ app.get("/health", (req, res) => {
     });
 });
 
-// Users endpoint
 app.get("/api/users", (req, res) => {
     res.status(200).json({
         users: [
@@ -34,7 +31,6 @@ app.get("/api/users", (req, res) => {
     });
 });
 
-// Start server only when executed directly
 if (require.main === module) {
     app.listen(PORT, "0.0.0.0", () => {
         console.log(`Server running on port ${PORT}`);
